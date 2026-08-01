@@ -8,6 +8,8 @@ The dataset lands in an S3 data lake and flows into Snowflake through a storage 
 
 ![Architecture](docs/architecture.png)
 
+> 📂 **Dataset + project slides:** [Google Drive folder](https://drive.google.com/drive/folders/1FEnGWMHhHzzTUCZOw1-YnH2v3DMuM-rs?usp=sharing) — download the CSVs here and place them under `data/` (they're too large to commit to the repo).
+
 ## What gets built
 
 | Layer | Where | What |
@@ -45,7 +47,7 @@ Python · Pandas · Amazon S3 · Snowflake · dbt (dbt-snowflake) · Apache Airf
 └── docs/architecture.png     # architecture diagram
 ```
 
-> `data/` (~2.3 GB of CSVs), logs, and dbt `target/` artifacts are intentionally not committed.
+> `data/` (~2.3 GB of CSVs), logs, and dbt `target/` artifacts are intentionally not committed — get the dataset and slides from the [Google Drive folder](https://drive.google.com/drive/folders/1FEnGWMHhHzzTUCZOw1-YnH2v3DMuM-rs?usp=sharing).
 
 ## How the pipeline works
 
