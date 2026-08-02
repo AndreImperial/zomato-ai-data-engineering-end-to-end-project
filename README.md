@@ -45,6 +45,12 @@ Python · Pandas · Amazon S3 · Snowflake · dbt (dbt-snowflake) · Apache Airf
 │   ├── rag_chat.py           #   RAG — "chat with your reviews" (Streamlit)
 │   ├── text_to_sql.py        #   text-to-SQL — "chat with your warehouse" (Streamlit)
 │   └── example.env           #   template for the AI credentials
+├── snowflake/                # Snowflake setup SQL (run in Snowsight, in order)
+│   ├── 01_setup.sql          #   warehouse ZOMATO_WH, database ZOMATO, schemas, role
+│   ├── 02_storage_integration.sql  # keyless S3 link (pairs with aws/iam/)
+│   ├── 03_stage_and_formats.sql    # external stage + CSV file format
+│   ├── 04_raw_tables.sql     #   RAW (Bronze) table DDL, column order matches the CSVs
+│   └── 05_copy_into.sql      #   COPY INTO RAW from the stage
 ├── aws/iam/                  # IAM policy + role trust policies for the S3 ↔ Snowflake handshake
 └── docs/architecture.png     # architecture diagram
 ```
@@ -59,7 +65,7 @@ The seven CSVs are uploaded to `s3://<BUCKET>/raw/<table>/` — one folder per t
 
 ### 2 · S3 → Snowflake: one keyless handshake
 
-Snowflake reads the bucket with **no stored keys**, using a storage integration + an IAM role. The JSON documents live in [`aws/iam/`](aws/iam/):
+Snowflake reads the bucket with **no stored keys**, using a storage integration + an IAM role. The Snowflake side is [`snowflake/02_storage_integration.sql`](snowflake/02_storage_integration.sql); the AWS JSON documents live in [`aws/iam/`](aws/iam/):
 
 | File | Used for |
 |---|---|
@@ -71,7 +77,7 @@ The order matters: create the AWS policy + role → create the Snowflake `STORAG
 
 ### 3 · Load — `COPY INTO`
 
-`COPY INTO` pulls each file from the stage into `ZOMATO.RAW` tables: 10M orders, ~23M order items, 300K reviews.
+Table DDL ([`snowflake/04_raw_tables.sql`](snowflake/04_raw_tables.sql)) matches each CSV's column order, then [`snowflake/05_copy_into.sql`](snowflake/05_copy_into.sql) pulls each file from the stage into `ZOMATO.RAW` tables: 10M orders, ~23M order items, 300K reviews.
 
 ### 4 · Transform — dbt (medallion)
 
@@ -102,7 +108,7 @@ Credentials never touch the code: docker-compose injects `SNOWFLAKE_*` env vars 
 
 ```bash
 # Snowflake objects (warehouse ZOMATO_WH, database ZOMATO, schemas RAW/STAGING/MARTS/SNAPSHOTS/AI, role DBT_ROLE)
-# + the S3 storage integration are created in Snowsight — see aws/iam/ for the AWS side.
+# + the S3 storage integration: run snowflake/01→05 in Snowsight — see aws/iam/ for the AWS side.
 
 # dbt
 cd zomato
