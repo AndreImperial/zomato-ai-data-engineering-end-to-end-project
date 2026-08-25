@@ -99,7 +99,7 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.16, duration: 0.6 }}
             >
-              Zomato AI Data Engineering is a production-style platform across S3, Snowflake, dbt, Airflow, Gemini, and Streamlit.
+              I built a path that takes raw delivery files, cleans them, adds AI-powered review analysis, and turns the results into a dashboard.
             </motion.p>
             <motion.div
               className="hero-actions"
@@ -137,8 +137,8 @@ function App() {
 
         <section className="project-brief section-shell">
           <Reveal className="brief-statement">
-            <h2>Built as a system, not a notebook.</h2>
-            <p>Raw delivery data becomes tested warehouse models, structured customer signals, and an operating dashboard through one scheduled path.</p>
+            <h2>From raw files to a working dashboard.</h2>
+            <p>The walkthrough below explains what I built at each stage, why that stage exists, and what the next stage receives.</p>
           </Reveal>
           <Reveal className="brief-facts">
             <div><ShieldCheck size={24} weight="duotone" /><span>Keyless S3 access</span></div>

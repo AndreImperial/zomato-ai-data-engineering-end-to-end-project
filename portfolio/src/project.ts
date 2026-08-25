@@ -18,7 +18,9 @@ export type ProjectMetric = {
 export type PipelineStage = {
   name: string
   role: string
+  plain: string
   detail: string
+  output: string
   proof: string
   Icon: Icon
 }
@@ -48,49 +50,63 @@ export const pipelineStages: PipelineStage[] = [
   {
     name: 'Amazon S3',
     role: 'Land seven source groups',
+    plain: 'Collect the raw delivery files',
     detail: 'Food-delivery CSVs enter a raw data lake with one folder per source table.',
+    output: 'A durable landing zone for the original files.',
     proof: '7 source folders',
     Icon: CloudArrowUp,
   },
   {
     name: 'Snowflake RAW',
     role: 'Load without stored cloud keys',
+    plain: 'Put the files in a reliable warehouse',
     detail: 'A Snowflake storage integration assumes an AWS IAM role before COPY INTO loads immutable raw tables.',
+    output: 'Raw tables that can be reloaded without exposing passwords or keys.',
     proof: 'keyless storage integration',
     Icon: Database,
   },
   {
     name: 'dbt Silver / Gold',
     role: 'Clean, model, and test',
+    plain: 'Turn messy files into trusted tables',
     detail: 'Staging views normalize source data. Dimensions, incremental facts, and marts answer business questions.',
+    output: 'Tested tables for orders, restaurants, delivery, and reviews.',
     proof: '17 SQL models',
     Icon: Stack,
   },
   {
     name: 'Apache Airflow',
     role: 'Run one governed sequence',
+    plain: 'Run every step in the right order',
     detail: 'The daily DAG reloads raw data, builds core models, enriches reviews, and then builds the AI mart.',
+    output: 'A repeatable daily workflow instead of a manual checklist.',
     proof: '4 ordered tasks',
     Icon: FlowArrow,
   },
   {
     name: 'Gemini enrichment',
     role: 'Structure customer language',
+    plain: 'Read customer reviews at scale',
     detail: 'Gemini classifies sentiment, score, topic, and key issue as deterministic JSON for new reviews only.',
+    output: 'Consistent labels that make thousands of reviews easier to analyze.',
     proof: 'idempotent enrichment',
     Icon: Brain,
   },
   {
     name: 'AI mart',
     role: 'Model AI output like data',
+    plain: 'Connect review themes to the business',
     detail: 'dbt joins enriched review labels back to review and restaurant context in a queryable insights mart.',
+    output: 'One analysis-ready table linking customer voice to restaurants and operations.',
     proof: 'mart_review_insights',
     Icon: Database,
   },
   {
     name: 'Streamlit',
     role: 'Turn marts into decisions',
+    plain: 'Make the results easy to use',
     detail: 'A read-only dashboard exposes demand, delivery, restaurant performance, and customer voice.',
+    output: 'A decision surface for trends, service levels, and review issues.',
     proof: '3 analysis views',
     Icon: ChartLineUp,
   },

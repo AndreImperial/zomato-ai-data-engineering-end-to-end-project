@@ -47,8 +47,8 @@ export function PipelineStory() {
     <section ref={sectionRef} className="pipeline-story" id="pipeline" aria-labelledby="pipeline-title">
       <div className="pipeline-sticky">
         <div className="section-heading pipeline-heading">
-          <h2 id="pipeline-title">Follow the governed path.</h2>
-          <p>Each handoff changes the data, its guarantees, or the decision it can support.</p>
+          <h2 id="pipeline-title">How the project was made.</h2>
+          <p>Follow the seven handoffs from original files to useful decisions. The active panel explains the build in plain language.</p>
         </div>
 
         <div className="pipeline-desktop">
@@ -93,9 +93,11 @@ export function PipelineStory() {
                 exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
                 transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
               >
-                <span className="pipeline-proof">{pipelineStages[activeIndex].proof}</span>
-                <h3>{pipelineStages[activeIndex].role}</h3>
+                <span className="pipeline-step">Stage {String(activeIndex + 1).padStart(2, '0')} of 07</span>
+                <h3>{pipelineStages[activeIndex].plain}</h3>
                 <p>{pipelineStages[activeIndex].detail}</p>
+                <strong className="pipeline-output">Result: {pipelineStages[activeIndex].output}</strong>
+                <span className="pipeline-proof">Built with {pipelineStages[activeIndex].proof}</span>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -114,9 +116,10 @@ export function PipelineStory() {
               >
                 <span className="pipeline-mobile-icon"><Icon size={22} weight="duotone" /></span>
                 <div>
-                  <span className="pipeline-proof">{stage.name}</span>
-                  <h3>{stage.role}</h3>
+                  <span className="pipeline-step">Stage {String(pipelineStages.indexOf(stage) + 1).padStart(2, '0')} of 07 · {stage.name}</span>
+                  <h3>{stage.plain}</h3>
                   <p>{stage.detail}</p>
+                  <strong className="pipeline-output">Result: {stage.output}</strong>
                 </div>
               </motion.li>
             )

@@ -647,10 +647,21 @@ h2 {
 
 .pipeline-proof {
   display: block;
-  margin-bottom: 15px;
+  margin-top: 22px;
+  margin-bottom: 0;
   color: var(--accent);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.68rem;
+}
+
+.pipeline-step {
+  display: block;
+  margin-bottom: 15px;
+  color: var(--faint);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .pipeline-detail h3,
@@ -665,6 +676,14 @@ h2 {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
+}
+
+.pipeline-output {
+  display: block;
+  margin-top: 22px;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .pipeline-mobile {
