@@ -464,7 +464,7 @@ h2 {
 .section-shell {
   width: min(calc(100% - 40px), var(--max-width));
   margin: 0 auto;
-  padding: clamp(92px, 10vw, 150px) 0;
+  padding: clamp(68px, 7vw, 112px) 0;
 }
 
 .project-brief {
@@ -515,7 +515,7 @@ h2 {
 
 .pipeline-story {
   position: relative;
-  min-height: 420dvh;
+  min-height: 300dvh;
   background: #0e1113;
 }
 
@@ -672,11 +672,11 @@ h2 {
 }
 
 .section-heading {
-  margin-bottom: clamp(54px, 7vw, 88px);
+  margin-bottom: clamp(38px, 5vw, 64px);
 }
 
 .decisions {
-  padding-bottom: 180px;
+  padding-bottom: 120px;
 }
 
 .decision-grid {
@@ -1394,7 +1394,7 @@ footer {
 
   .section-shell {
     width: 100%;
-    padding: 88px 16px;
+    padding: 64px 16px;
   }
 
   .brief-statement h2,
@@ -1405,7 +1405,7 @@ footer {
   }
 
   .pipeline-sticky {
-    padding: 88px 16px 72px;
+    padding: 68px 16px 56px;
   }
 
   .pipeline-mobile li {
@@ -1479,7 +1479,7 @@ footer {
   }
 
   .closing {
-    min-height: 72dvh;
+    min-height: 60dvh;
   }
 
   .closing h2 {
