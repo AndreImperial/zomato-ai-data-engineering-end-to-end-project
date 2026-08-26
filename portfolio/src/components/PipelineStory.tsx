@@ -54,11 +54,13 @@ export function PipelineStory() {
           </div>
 
           <div className="pipeline-detail" aria-live="polite">
-            <span className="pipeline-step">Stage {String(activeIndex + 1).padStart(2, '0')} of 07</span>
-            <h3>{pipelineStages[activeIndex].plain}</h3>
-            <p>{pipelineStages[activeIndex].detail}</p>
-            <strong className="pipeline-output">Result: {pipelineStages[activeIndex].output}</strong>
-            <span className="pipeline-proof">Built with {pipelineStages[activeIndex].proof}</span>
+            <div>
+              <span className="pipeline-step">Stage {String(activeIndex + 1).padStart(2, '0')} of 07</span>
+              <h3>{pipelineStages[activeIndex].plain}</h3>
+              <p>{pipelineStages[activeIndex].detail}</p>
+              <strong className="pipeline-output">Result: {pipelineStages[activeIndex].output}</strong>
+              <span className="pipeline-proof">Built with {pipelineStages[activeIndex].proof}</span>
+            </div>
           </div>
         </div>
 
