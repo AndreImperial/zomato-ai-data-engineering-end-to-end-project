@@ -515,16 +515,14 @@ h2 {
 
 .pipeline-story {
   position: relative;
-  min-height: 170dvh;
   background: #0e1113;
 }
 
 .pipeline-sticky {
-  position: sticky;
-  top: 0;
+  position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
-  min-height: 100dvh;
+  min-height: auto;
   padding: clamp(82px, 9vh, 112px) clamp(20px, 4vw, 64px) 42px;
   overflow: hidden;
 }
@@ -598,7 +596,11 @@ h2 {
   display: grid;
   justify-items: center;
   width: 150px;
+  padding: 0;
+  border: 0;
   color: var(--faint);
+  background: transparent;
+  cursor: pointer;
   text-align: center;
   transform: translate(-50%, -50%);
   transition: color 280ms ease, transform 280ms var(--ease-out);
@@ -1295,15 +1297,47 @@ footer {
     background: var(--accent);
   }
 
-  .pipeline-mobile li {
-    position: relative;
-    display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: 20px;
-    padding: 22px;
-    border-radius: var(--radius);
-    background: var(--surface);
-  }
+.pipeline-mobile li {
+  position: relative;
+  padding: 0;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.pipeline-mobile-button {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  width: 100%;
+  padding: 22px;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.pipeline-mobile-button:focus-visible,
+.pipeline-node:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.pipeline-mobile-title,
+.pipeline-mobile-copy {
+  display: block;
+}
+
+.pipeline-mobile-title {
+  margin-bottom: 13px;
+  font-size: clamp(1.6rem, 2.2vw, 2.3rem);
+  line-height: 1.08;
+}
+
+.pipeline-mobile-copy {
+  color: var(--muted);
+  line-height: 1.65;
+}
 
   .pipeline-mobile-icon {
     position: relative;
@@ -1427,7 +1461,7 @@ footer {
     padding: 68px 16px 56px;
   }
 
-  .pipeline-mobile li {
+  .pipeline-mobile-button {
     grid-template-columns: 42px 1fr;
     gap: 15px;
     padding: 18px;
