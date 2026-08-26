@@ -607,6 +607,8 @@ h2 {
 }
 
 .pipeline-node-icon {
+  position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
   width: 46px;
@@ -619,8 +621,16 @@ h2 {
 }
 
 .pipeline-node > span:last-child {
-  font-size: 0.73rem;
+  position: relative;
+  z-index: 2;
+  margin-top: -2px;
+  padding: 3px 7px;
+  color: inherit;
+  background: rgb(13 16 19 / 0.94);
+  font-size: 0.78rem;
   font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .pipeline-node.is-active {
